@@ -62,13 +62,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var parts = this.icon.split(':');
           var iconName = parts.removeLast();
           // find the iconSet for the name given via the icon property
-          var iconset = $['meta'].jsElement.callMethod('byId', [parts.removeLast()]);
+          var iconset = $['meta'].byId(parts.removeLast());
           if (iconset != null) {
             // size the element as needed
             this.style.height = this.style.width = '${iconset.iconSize}px';
             // use iconset's applyAsBackground method to set the given icon
             // as the element's background image.
-            iconset.jsElement.callMethod('applyIcon', [this, iconName]);
+            iconset.applyIcon(this, iconName, null, null);
           }
         }
       }

@@ -25,13 +25,13 @@ class SvgIconDemo extends PolymerElement {
     var parts = this.icon.split(':');
     var iconName = parts.removeLast();
     // find the iconSet for the name given via the icon property
-    var iconset = $['meta'].jsElement.callMethod('byId', [parts.removeLast()]);
+    var iconset = $['meta'].byId(parts.removeLast());
     if (iconset != null) {
       // size the element as needed
       this.style.height = this.style.width = '${size}px';
       // use iconset's applyAsBackground method to set the given icon
       // as the element's background image.
-      iconset.jsElement.callMethod('applyIcon', [this, iconName]);
+      iconset.applyIcon(this, iconName);
     }
   }
 }
@@ -39,8 +39,8 @@ class SvgIconDemo extends PolymerElement {
 main() {
   initPolymer();
   Polymer.onReady.then((_) {
-    var icons = querySelector('#meta').jsElement
-        .callMethod('byId', ['svg-sample-icons']).jsElement['iconNames'];
+    var icons = querySelector('#meta').byId('svg-sample-icons')
+        .jsElement['iconNames'];
 
     icons = icons.map((ic) => 'svg-sample-icons:$ic');
     for (var p in querySelectorAll('template')) {
